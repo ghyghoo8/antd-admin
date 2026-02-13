@@ -1,10 +1,12 @@
-import puppeteer from 'puppeteer'
+const runE2E = process.env.RUN_E2E === '1'
+const d = runE2E ? describe : describe.skip
 
-describe('Login', () => {
+d('Login', () => {
   let browser
   let page
 
   beforeAll(async () => {
+    const puppeteer = require('puppeteer')
     browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   })
 

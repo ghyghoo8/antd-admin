@@ -5,7 +5,7 @@
   "description": "An admin dashboard application demo built upon Ant Design and UmiJS",
   "dependencies": {
     "@ant-design/icons": "^4.8.3",
-    "@lingui/react": "^3.17.2",
+    "@lingui/react": "^4.14.1",
     "antd": "^5.16.1",
     "axios": "^0.21.4",
     "classnames": "^2.5.1",
@@ -41,10 +41,12 @@
   },
   "devDependencies": {
     "@ant-design/compatible": "^5.1.2",
+    "@babel/core": "^7.29.0",
     "@babel/preset-react": "^7.24.1",
-    "@lingui/cli": "^3.17.2",
-    "@lingui/core": "^4.8.0",
-    "@lingui/macro": "^3.17.2",
+    "@lingui/cli": "^4.14.1",
+    "@lingui/core": "^4.14.1",
+    "@lingui/format-json": "^5.9.1",
+    "@lingui/macro": "^4.14.1",
     "@umijs/preset-react": "^1.8.32",
     "babel-eslint": "^10.1.0",
     "babel-plugin-dev-expression": "^0.2.3",
@@ -65,11 +67,15 @@
     "mockjs": "^1.1.0",
     "module": "^1.2.5",
     "prettier": "^2.8.8",
+    "puppeteer": "^24.37.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^21.0.0",
     "typescript": "^4.9.5",
     "umi": "^3.5.41"
+  },
+  "overrides": {
+    "@babel/core": "^7.29.0"
   },
   "engines": {
     "node": ">= 10.0.0"
@@ -106,14 +112,7 @@
           "src/layouts"
         ]
       }
-    ],
-    "format": "minimal",
-    "extractBabelOptions": {
-      "presets": [
-        "@umijs/babel-preset-umi",
-        "@babel/preset-react"
-      ]
-    }
+    ]
   },
   "scripts": {
     "analyze": "cross-env ANALYZE=1 umi build",
