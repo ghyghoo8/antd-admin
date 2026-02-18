@@ -57,11 +57,9 @@ class Login extends PureComponent {
                   placeholder={t`Username`}
                 />
             </FormItem>
-            <Trans id="Password" render={({translation}) => (
-              <FormItem name="password" rules={[{ required: true }]} hasFeedback>
-              <Input type='password' placeholder={translation} required />
-              </FormItem>)} 
-            />
+            <FormItem name="password" rules={[{ required: true }]} hasFeedback>
+              <Input type='password' placeholder={t`Password`} required />
+            </FormItem>
             <Row>
               <Button
                 type="primary"
