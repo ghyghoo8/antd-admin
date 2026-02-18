@@ -20,9 +20,11 @@ import styles from './index.less'
 import store from 'store'
 
 const bodyStyle = {
-  bodyStyle: {
-    height: 432,
-    background: '#fff',
+  styles: {
+    body: {
+      height: 432,
+      background: '#fff',
+    },
   },
 }
 
@@ -63,9 +65,11 @@ class Dashboard extends PureComponent {
           {numberCards}
           <Col lg={18} md={24}>
             <Card
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
+              variant="shadow"
+              styles={{
+                body: {
+                  padding: '24px 36px 24px 0',
+                },
               }}
             >
               <Sales data={sales} />
@@ -75,12 +79,14 @@ class Dashboard extends PureComponent {
             <Row gutter={24}>
               <Col lg={24} md={12}>
                 <Card
-                  bordered={false}
+                  variant="shadow"
                   className={styles.weather}
-                  bodyStyle={{
-                    padding: 0,
-                    height: 204,
-                    background: Color.blue,
+                  styles={{
+                    body: {
+                      padding: 0,
+                      height: 204,
+                      background: Color.blue,
+                    },
                   }}
                 >
                   <Weather
@@ -91,12 +97,14 @@ class Dashboard extends PureComponent {
               </Col>
               <Col lg={24} md={12}>
                 <Card
-                  bordered={false}
+                  variant="shadow"
                   className={styles.quote}
-                  bodyStyle={{
-                    padding: 0,
-                    height: 204,
-                    background: Color.peach,
+                  styles={{
+                    body: {
+                      padding: 0,
+                      height: 204,
+                      background: Color.peach,
+                    },
                   }}
                 >
                   <ScrollBar>
@@ -107,12 +115,12 @@ class Dashboard extends PureComponent {
             </Row>
           </Col>
           <Col lg={12} md={24}>
-            <Card bordered={false} {...bodyStyle}>
+            <Card variant="shadow" {...bodyStyle}>
               <RecentSales data={recentSales} />
             </Card>
           </Col>
           <Col lg={12} md={24}>
-            <Card bordered={false} {...bodyStyle}>
+            <Card variant="shadow" {...bodyStyle}>
               <ScrollBar>
                 <Comments data={comments} />
               </ScrollBar>
@@ -120,21 +128,23 @@ class Dashboard extends PureComponent {
           </Col>
           <Col lg={24} md={24}>
             <Card
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
+              variant="shadow"
+              styles={{
+                body: {
+                  padding: '24px 36px 24px 0',
+                },
               }}
             >
               <Completed data={completed} />
             </Card>
           </Col>
           <Col lg={8} md={24}>
-            <Card bordered={false} {...bodyStyle}>
+            <Card variant="shadow" {...bodyStyle}>
               <Browser data={browser} />
             </Card>
           </Col>
           <Col lg={8} md={24}>
-            <Card bordered={false} {...bodyStyle}>
+            <Card variant="shadow" {...bodyStyle}>
               <ScrollBar>
                 <Cpu {...cpu} />
               </ScrollBar>
@@ -142,8 +152,8 @@ class Dashboard extends PureComponent {
           </Col>
           <Col lg={8} md={24}>
             <Card
-              bordered={false}
-              bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}
+              variant="shadow"
+              styles={{ ...bodyStyle.styles, body: { ...bodyStyle.styles.body, padding: 0 } }}
             >
               <User {...user} avatar={avatar} username={username} />
             </Card>

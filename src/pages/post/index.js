@@ -8,7 +8,7 @@ import { t } from "@lingui/macro"
 import { Page } from 'components'
 import List from './components/List'
 
-const { TabPane } = Tabs
+// use `items` prop instead of Tabs.TabPane
 
 const EnumPostStatus = {
   UNPUBLISH: 1,
@@ -62,21 +62,20 @@ class Post extends PureComponent {
               ? String(EnumPostStatus.UNPUBLISH)
               : String(EnumPostStatus.PUBLISHED)
           }
-          onTabClick={this.handleTabClick}
-        >
-          <TabPane
-            tab={t`Publised`}
-            key={String(EnumPostStatus.PUBLISHED)}
-          >
-            <List {...this.listProps} />
-          </TabPane>
-          <TabPane
-            tab={t`Unpublished`}
-            key={String(EnumPostStatus.UNPUBLISH)}
-          >
-            <List {...this.listProps} />
-          </TabPane>
-        </Tabs>
+          onChange={this.handleTabClick}
+          items={[
+            {
+              key: String(EnumPostStatus.PUBLISHED),
+              label: t`Publised`,
+              children: <List {...this.listProps} />,
+            },
+            {
+              key: String(EnumPostStatus.UNPUBLISH),
+              label: t`Unpublished`,
+              children: <List {...this.listProps} />,
+            },
+          ]}
+        />
       </Page>
     )
   }

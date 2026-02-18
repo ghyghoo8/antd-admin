@@ -54,8 +54,8 @@ class User extends PureComponent {
     return {
       item: modalType === 'create' ? {} : currentItem,
       open: modalOpen,
-      destroyOnClose: true,
-      maskClosable: false,
+      destroyOnHidden: true,
+      mask: { closable: false },
       confirmLoading: loading.effects[`user/${modalType}`],
       title: `${
         modalType === 'create' ? t`Create User` : t`Update User`

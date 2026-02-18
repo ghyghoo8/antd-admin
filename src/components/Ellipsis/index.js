@@ -40,7 +40,9 @@ export const cutStrByFullLength = (str = '', maxLength) => {
 
 const getTooltip = ({ tooltip, overlayStyle, title, children }) => {
   if (tooltip) {
-    const props = tooltip === true ? { overlayStyle, title } : { ...tooltip, overlayStyle, title };
+    const base = tooltip === true ? {} : { ...tooltip };
+    const styleProp = overlayStyle ? { styles: { root: overlayStyle } } : {};
+    const props = { ...base, ...styleProp, title };
     return <Tooltip {...props}>{children}</Tooltip>;
   }
   return children;
@@ -63,17 +65,17 @@ const EllipsisText = ({ text, length, tooltip, fullWidthRecognition, ...other })
   }
 
   const spanAttrs = tooltip ? {} : { ...other };
-  return getTooltip({
-    tooltip,
-    overlayStyle: TooltipOverlayStyle,
-    title: text,
-    children: (
-      <span {...spanAttrs}>
-        {displayText}
-        {tail}
-      </span>
-    ),
-  });
+      return getTooltip({
+        tooltip,
+        overlayStyle: TooltipOverlayStyle,
+        title: text,
+        children: (
+          <span {...spanAttrs}>
+            {displayText}
+            {tail}
+          </span>
+        ),
+      });
 };
 
 export default class Ellipsis extends Component {

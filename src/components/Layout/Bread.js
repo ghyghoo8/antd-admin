@@ -10,29 +10,24 @@ import styles from './Bread.less'
 
 @withRouter
 class Bread extends PureComponent {
-  generateBreadcrumbs = (paths) => {
-    return paths.map((item, key) => {
-      const content = item && (
-        <Fragment>
-          {item.icon && (
-            <span style={{ marginRight: 4 }}>{iconMap[item.icon]}</span>
-          )}
-          {item.name}
-        </Fragment>
-      )
+  generateBreadcrumbItems = paths => {
+    return paths
+      .map((item, key) => {
+        if (!item) return null
 
-      return (
-        item && (
-          <Breadcrumb.Item key={key}>
-            {paths.length - 1 !== key ? (
-              <Link to={item.route || '#'}>{content}</Link>
-            ) : (
-              content
-            )}
-          </Breadcrumb.Item>
+        const content = (
+          <Fragment>
+            {item.icon && <span style={{ marginRight: 4 }}>{iconMap[item.icon]}</span>}
+            {item.name}
+          </Fragment>
         )
-      )
-    })
+
+        return ({
+          key: item.id || key,
+          title: paths.length - 1 !== key ? <Link to={item.route || '#'}>{content}</Link> : content,
+        })
+      })
+      .filter(Boolean)
   }
   render() {
     const { routeList, location } = this.props
@@ -53,11 +48,9 @@ class Bread extends PureComponent {
           },
         ]
 
-    return (
-      <Breadcrumb className={styles.bread}>
-        {this.generateBreadcrumbs(paths)}
-      </Breadcrumb>
-    )
+    const items = this.generateBreadcrumbItems(paths)
+
+    return <Breadcrumb className={styles.bread} items={items} />
   }
 }
 

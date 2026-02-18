@@ -8,11 +8,7 @@ import styles from './numberCard.less'
 
 function NumberCard({ icon, color, title, number, countUp }) {
   return (
-    <Card
-      className={styles.numberCard}
-      bordered={false}
-      bodyStyle={{ padding: 10 }}
-    >
+    <Card className={styles.numberCard} variant="shadow" styles={{ body: { padding: 10 } }}>
       <span className={styles.iconWarp} style={{ color }}>
         {iconMap[icon]}
       </span>

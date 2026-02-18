@@ -40,7 +40,7 @@ class UserModal extends PureComponent {
     const { item = {}, onOk, form, ...modalProps } = this.props
 
     return (
-      (<Modal {...modalProps} onOk={this.handleOk}>
+      <Modal {...modalProps} onOk={this.handleOk}>
         <Form ref={this.formRef} name="control-ref" initialValues={{ ...item, address: item.address && item.address.split(' ') }} layout="horizontal">
           <FormItem name='name' rules={[{ required: true }]}
             label={t`Name`} hasFeedback {...formItemLayout}>
@@ -81,7 +81,7 @@ class UserModal extends PureComponent {
             />
           </FormItem>
         </Form>
-      </Modal>)
+      </Modal>
     );
   }
 }

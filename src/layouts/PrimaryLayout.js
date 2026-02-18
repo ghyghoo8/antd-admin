@@ -116,7 +116,7 @@ class PrimaryLayout extends PureComponent {
         <Layout>
           {isMobile ? (
             <Drawer
-              maskClosable
+              mask={{ closable: true }}
               closable={false}
               onClose={onCollapseChange.bind(this, !collapsed)}
               open={!collapsed}

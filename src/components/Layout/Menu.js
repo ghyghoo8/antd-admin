@@ -7,7 +7,7 @@ import { arrayToTree, queryAncestors } from 'utils'
 import iconMap from 'utils/iconMap'
 import store from 'store'
 
-const { SubMenu } = Menu
+// Use `items` prop for Menu (avoid JSX children like Menu.Item/SubMenu)
 
 @withRouter
 class SiderMenu extends PureComponent {
@@ -34,31 +34,30 @@ class SiderMenu extends PureComponent {
     store.set('openKeys', newOpenKeys)
   }
 
-  generateMenus = data => {
+  generateMenuItems = data => {
     return data.map(item => {
       if (item.children) {
-        return (
-          <SubMenu
-            key={item.id}
-            title={
-              <Fragment>
-                {item.icon && iconMap[item.icon]}
-                <span>{item.name}</span>
-              </Fragment>
-            }
-          >
-            {this.generateMenus(item.children)}
-          </SubMenu>
-        )
+        return {
+          key: item.id,
+          label: (
+            <Fragment>
+              {item.icon && iconMap[item.icon]}
+              <span>{item.name}</span>
+            </Fragment>
+          ),
+          children: this.generateMenuItems(item.children),
+        }
       }
-      return (
-        <Menu.Item key={item.id}>
+
+      return {
+        key: item.id,
+        label: (
           <NavLink to={item.route || '#'}>
             {item.icon && iconMap[item.icon]}
             <span>{item.name}</span>
           </NavLink>
-        </Menu.Item>
-      )
+        ),
+      }
     })
   }
 
@@ -91,6 +90,8 @@ class SiderMenu extends PureComponent {
           openKeys: this.state.openKeys,
         }
 
+    const items = this.generateMenuItems(menuTree)
+
     return (
       <Menu
         mode="inline"
@@ -104,10 +105,9 @@ class SiderMenu extends PureComponent {
               }
             : undefined
         }
+        items={items}
         {...menuProps}
-      >
-        {this.generateMenus(menuTree)}
-      </Menu>
+      />
     )
   }
 }
