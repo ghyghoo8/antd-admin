@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash'
 const { pathToRegexp } = require("path-to-regexp")
 import store from 'store'
-import { i18n } from './config'
+import { i18n } from '@lingui/core'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -14,8 +14,8 @@ export config from './config'
 export request from './request'
 export { Color } from './theme'
 
-export const languages = i18n ? i18n.languages.map(item => item.key) : []
-export const defaultLanguage = i18n ? i18n.defaultLanguage : ''
+export const languages = i18n && i18n.languages ? i18n.languages.map(item => item.key) : []
+export const defaultLanguage = i18n && i18n.defaultLanguage ? i18n.defaultLanguage : 'en'
 
 /**
  * Query objects that specify keys and values in an array where all values are objects.

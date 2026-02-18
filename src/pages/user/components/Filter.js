@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import { FilterItem } from 'components'
-import { Trans } from "@lingui/macro"
-import { t } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { Button, Row, Col, DatePicker, Form, Input, Cascader } from 'antd'
 import city from 'utils/city'
 
@@ -84,9 +83,9 @@ class Filter extends Component {
           <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
             <Form.Item name="name">
               <Search
-                placeholder={t`Search Name`}
-                onSearch={this.handleSubmit}
-              />
+                  placeholder={i18n._('Search Name')}
+                  onSearch={this.handleSubmit}
+                />
             </Form.Item>
           </Col>
           <Col
@@ -99,7 +98,7 @@ class Filter extends Component {
               <Cascader
                 style={{ width: '100%' }}
                 options={city}
-                placeholder={t`Please pick an address`}
+                placeholder={i18n._('Please pick an address')}
               />
             </Form.Item>
           </Col>
@@ -110,7 +109,7 @@ class Filter extends Component {
             sm={{ span: 12 }}
             id="createTimeRangePicker"
           >
-            <FilterItem label={t`CreateTime`}>
+            <FilterItem label={i18n._('CreateTime')}>
               <Form.Item name="createTime">
                 <RangePicker
                   style={{ width: '100%' }}
@@ -131,14 +130,14 @@ class Filter extends Component {
                   className="margin-right"
                   onClick={this.handleSubmit}
                 >
-                  <Trans>Search</Trans>
+                  {i18n._('Search')}
                 </Button>
                 <Button onClick={this.handleReset}>
-                  <Trans>Reset</Trans>
+                  {i18n._('Reset')}
                 </Button>
               </div>
               <Button type="ghost" onClick={onAdd}>
-                <Trans>Create</Trans>
+                {i18n._('Create')}
               </Button>
             </Row>
           </Col>

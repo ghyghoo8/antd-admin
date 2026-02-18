@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Table, Modal, Avatar } from 'antd'
 import { DropOption } from 'components'
-import { t } from "@lingui/macro"
-import { Trans } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { Link } from 'umi'
 import styles from './List.less'
 
@@ -17,7 +16,7 @@ class List extends PureComponent {
       onEditItem(record)
     } else if (e.key === '2') {
       confirm({
-        title: t`Are you sure delete this record?`,
+        title: i18n._('Are you sure delete this record?'),
         onOk() {
           onDeleteItem(record.id)
         },
@@ -30,7 +29,7 @@ class List extends PureComponent {
 
     const columns = [
       {
-        title: <Trans>Avatar</Trans>,
+        title: i18n._('Avatar'),
         dataIndex: 'avatar',
         key: 'avatar',
         width: '7%',
@@ -38,51 +37,51 @@ class List extends PureComponent {
         render: text => <Avatar style={{ marginLeft: 8 }} src={text} />,
       },
       {
-        title: <Trans>Name</Trans>,
+        title: i18n._('Name'),
         dataIndex: 'name',
         key: 'name',
         render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
       },
       {
-        title: <Trans>NickName</Trans>,
+        title: i18n._('NickName'),
         dataIndex: 'nickName',
         key: 'nickName',
       },
       {
-        title: <Trans>Age</Trans>,
+        title: i18n._('Age'),
         dataIndex: 'age',
         width: '6%',
         key: 'age',
       },
       {
-        title: <Trans>Gender</Trans>,
+        title: i18n._('Gender'),
         dataIndex: 'isMale',
         key: 'isMale',
         width: '7%',
-        render: text => <span>{text ? 'Male' : 'Female'}</span>,
+        render: text => <span>{text ? i18n._('Male') : i18n._('Female')}</span>,
       },
       {
-        title: <Trans>Phone</Trans>,
+        title: i18n._('Phone'),
         dataIndex: 'phone',
         key: 'phone',
       },
       {
-        title: <Trans>Email</Trans>,
+        title: i18n._('Email'),
         dataIndex: 'email',
         key: 'email',
       },
       {
-        title: <Trans>Address</Trans>,
+        title: i18n._('Address'),
         dataIndex: 'address',
         key: 'address',
       },
       {
-        title: <Trans>CreateTime</Trans>,
+        title: i18n._('CreateTime'),
         dataIndex: 'createTime',
         key: 'createTime',
       },
       {
-        title: <Trans>Operation</Trans>,
+        title: i18n._('Operation'),
         key: 'operation',
         fixed: 'right',
         width: '8%',
@@ -91,8 +90,8 @@ class List extends PureComponent {
             <DropOption
               onMenuClick={e => this.handleMenuClick(record, e)}
               menuOptions={[
-                { key: '1', name: t`Update` },
-                { key: '2', name: t`Delete` },
+                { key: '1', name: i18n._('Update') },
+                { key: '2', name: i18n._('Delete') },
               ]}
             />
           )
@@ -105,7 +104,7 @@ class List extends PureComponent {
         {...tableProps}
         pagination={{
           ...tableProps.pagination,
-          showTotal: total => t`Total ${total} Items`,
+          showTotal: total => i18n._('Total {total} Items', { total }),
         }}
         className={styles.table}
         bordered

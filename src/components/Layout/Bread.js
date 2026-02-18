@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Breadcrumb } from 'antd'
 import { Link, withRouter } from 'umi'
-import { t } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import iconMap from 'utils/iconMap'
 const { pathToRegexp } = require('path-to-regexp')
 import { queryAncestors } from 'utils'
@@ -44,7 +44,7 @@ class Bread extends PureComponent {
           routeList[0],
           {
             id: 404,
-            name: t`Not Found`,
+            name: i18n._('Not Found'),
           },
         ]
 

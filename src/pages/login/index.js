@@ -4,7 +4,7 @@ import { connect } from 'umi'
 import { Button, Row, Input, Form } from 'antd'
 import { GlobalFooter } from 'components'
 import { GithubOutlined } from '@ant-design/icons'
-import { t, Trans } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { setLocale } from 'utils'
 import config from 'utils/config'
 
@@ -54,11 +54,12 @@ class Login extends PureComponent {
             <FormItem name="username" 
               rules={[{ required: true }]} hasFeedback>
                 <Input
-                  placeholder={t`Username`}
+                  placeholder={i18n._('Username')}
+                  autoComplete="username"
                 />
             </FormItem>
             <FormItem name="password" rules={[{ required: true }]} hasFeedback>
-              <Input type='password' placeholder={t`Password`} required />
+              <Input type="password" placeholder={i18n._('Password')} required autoComplete="current-password" />
             </FormItem>
             <Row>
               <Button
@@ -66,15 +67,15 @@ class Login extends PureComponent {
                 htmlType="submit"
                 loading={loading.effects.login}
               >
-                <Trans>Sign in</Trans>
+                {i18n._('Sign in')}
               </Button>
               <p>
                 <span className="margin-right">
-                  <Trans>Username</Trans>
+                  {i18n._('Username')}
                   ：guest
                 </span>
                 <span>
-                  <Trans>Password</Trans>
+                  {i18n._('Password')}
                   ：guest
                 </span>
               </p>

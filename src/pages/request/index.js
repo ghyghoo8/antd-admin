@@ -4,7 +4,7 @@ import { apiPrefix } from 'utils/config'
 import { Row, Col, Select, Form, Input, Button, List, Tag, Checkbox } from 'antd'
 import classnames from 'classnames'
 import { CloseOutlined } from '@ant-design/icons'
-import { Trans } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import api from '@/services/api'
 import { Page } from 'components'
 
@@ -189,7 +189,7 @@ class RequestPage extends React.Component {
                   onClick={this.handleVisible}
                   size="large"
                 >
-                  <Trans>Params</Trans>
+                  {i18n._('Params')}
                 </Button>
               </InputGroup>
 
@@ -199,7 +199,7 @@ class RequestPage extends React.Component {
                 style={{ width: 100 }}
                 onClick={this.handleRequest}
               >
-                <Trans>Send</Trans>
+                {i18n._('Send')}
               </Button>
             </Row>
             <Form ref={this.formRef} name="control-ref" >
@@ -242,7 +242,7 @@ class RequestPage extends React.Component {
 
                 <Row style={{ marginTop: 8 }}>
                   <Button onClick={this.handleAddField}>
-                    <Trans>Add Param</Trans>
+                    {i18n._('Add Param')}
                   </Button>
                 </Row>
               </div>

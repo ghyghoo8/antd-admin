@@ -4,7 +4,7 @@ import { connect } from 'umi'
 import { Tabs } from 'antd'
 import { history } from 'umi'
 import { stringify } from 'qs'
-import { t } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { Page } from 'components'
 import List from './components/List'
 
@@ -66,12 +66,12 @@ class Post extends PureComponent {
           items={[
             {
               key: String(EnumPostStatus.PUBLISHED),
-              label: t`Publised`,
+              label: i18n._('Publised'),
               children: <List {...this.listProps} />,
             },
             {
               key: String(EnumPostStatus.UNPUBLISH),
-              label: t`Unpublished`,
+              label: i18n._('Unpublished'),
               children: <List {...this.listProps} />,
             },
           ]}

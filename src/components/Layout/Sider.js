@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Switch, Layout } from 'antd'
-import { t } from "@lingui/macro"
-import { Trans } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { BulbOutlined } from '@ant-design/icons'
 import ScrollBar from '../ScrollBar'
 import { config } from 'utils'
@@ -58,7 +57,7 @@ class Sider extends PureComponent {
           <div className={styles.switchTheme}>
             <span>
               <BulbOutlined />
-              <Trans>Switch Theme</Trans>
+              {i18n._('Switch Theme')}
             </span>
             <Switch
               onChange={onThemeChange.bind(
@@ -66,8 +65,8 @@ class Sider extends PureComponent {
                 theme === 'dark' ? 'light' : 'dark'
               )}
               defaultChecked={theme === 'dark'}
-              checkedChildren={t`Dark`}
-              unCheckedChildren={t`Light`}
+              checkedChildren={i18n._('Dark')}
+              unCheckedChildren={i18n._('Light')}
             />
           </div>
         )}

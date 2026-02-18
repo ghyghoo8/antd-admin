@@ -8,7 +8,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons'
-import { Trans } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { getLocale, setLocale } from 'utils'
 import dayjs from 'dayjs'
 import classnames from 'classnames'
@@ -38,16 +38,16 @@ class Header extends PureComponent {
         label: (
           <Fragment>
             <span style={{ color: '#999', marginRight: 4 }}>
-              <Trans>Hi,</Trans>
+              {i18n._('Hi,')}
             </span>
             <span>{username}</span>
             <Avatar style={{ marginLeft: 8 }} src={avatar} />
           </Fragment>
         ),
-        children: [
+            children: [
           {
             key: 'SignOut',
-            label: <Trans>Sign out</Trans>,
+            label: i18n._('Sign out'),
           },
         ],
       },
@@ -104,7 +104,7 @@ class Header extends PureComponent {
               itemLayout="horizontal"
               dataSource={notifications}
               locale={{
-                emptyText: <Trans>You have viewed all notifications.</Trans>,
+                emptyText: i18n._('You have viewed all notifications.'),
               }}
               renderItem={item => (
                 <List.Item className={styles.notificationItem}>
@@ -125,7 +125,7 @@ class Header extends PureComponent {
                 onClick={onAllNotificationsRead}
                 className={styles.clearButton}
               >
-                <Trans>Clear notifications</Trans>
+                {i18n._('Clear notifications')}
               </div>
             ) : null}
           </div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { history } from 'umi'
 import { connect } from 'umi'
 import { Row, Col, Button, Popconfirm } from 'antd'
-import { t } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 import { Page } from 'components'
 import { stringify } from 'qs'
 import List from './components/List'
@@ -58,7 +58,7 @@ class User extends PureComponent {
       mask: { closable: false },
       confirmLoading: loading.effects[`user/${modalType}`],
       title: `${
-        modalType === 'create' ? t`Create User` : t`Update User`
+        modalType === 'create' ? i18n._('Create User') : i18n._('Update User')
       }`,
       centered: true,
       onOk: data => {

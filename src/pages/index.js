@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import { Redirect } from 'umi'
-import { t } from "@lingui/macro"
+import { i18n } from '@lingui/core'
 
 class Index extends PureComponent {
   render() {
-    return <Redirect to={t`/dashboard`} />
+    return <Redirect to={i18n._('/dashboard')} />
   }
 }
 
