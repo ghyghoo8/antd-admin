@@ -67,7 +67,7 @@ const appModel = {
 
         cancelRequest.forEach((value, key) => {
           if (value.pathname !== window.location.pathname) {
-            value.cancel(CANCEL_REQUEST_MESSAGE)
+            value.abort(CANCEL_REQUEST_MESSAGE)
             cancelRequest.delete(key)
           }
         })
